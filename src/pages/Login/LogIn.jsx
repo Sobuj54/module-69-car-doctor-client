@@ -1,9 +1,27 @@
+import { useContext } from "react";
 import img from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const LogIn = () => {
+  const { signIn } = useContext(AuthContext);
+
   const handleLogIn = (event) => {
     event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -23,6 +41,7 @@ const LogIn = () => {
                 <input
                   type="text"
                   placeholder="email"
+                  name="email"
                   className="input input-bordered"
                 />
               </div>
@@ -33,6 +52,7 @@ const LogIn = () => {
                 <input
                   type="text"
                   placeholder="password"
+                  name="password"
                   className="input input-bordered"
                 />
                 <label className="label">
