@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import BookingRow from "./BookingRow";
+import Swal from "sweetalert2";
 
 const Bookings = () => {
   const { user } = useContext(AuthContext);
@@ -14,14 +15,43 @@ const Bookings = () => {
       .then((data) => setBookings(data));
   });
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/bookings/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const remaining = bookings.filter(
+                (booking) => booking._id !== id
+              );
+              setBookings(remaining);
+
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
+
   return (
-    <div>
+    <div className="mt-20">
       <h2 className="text-3xl text-center font-bold">
         Bookings : {bookings.length}
       </h2>
 
-      <div className="overflow-x-auto">
-        <table className="table">
+      <div className="overflow-x-auto mt-10">
+        <table className="table table-sm">
           {/* head */}
           <thead>
             <tr>
@@ -37,7 +67,10 @@ const Bookings = () => {
           </thead>
           <tbody>
             {bookings.map((booking) => (
-              <BookingRow key={booking._id} booking={booking}></BookingRow>
+              <BookingRow
+                key={booking._id}
+                booking={booking}
+                handleDelete={handleDelete}></BookingRow>
             ))}
           </tbody>
         </table>

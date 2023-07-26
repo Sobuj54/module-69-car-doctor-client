@@ -1,5 +1,5 @@
-const BookingRow = ({ booking }) => {
-  const { price, img, date, service } = booking;
+const BookingRow = ({ booking, handleDelete }) => {
+  const { _id, price, img, date, service } = booking;
 
   return (
     <>
@@ -7,7 +7,9 @@ const BookingRow = ({ booking }) => {
       <tr>
         <th>
           <label>
-            <button className="btn btn-sm btn-circle">
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn btn-sm btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -26,7 +28,7 @@ const BookingRow = ({ booking }) => {
         </th>
         <td>
           <div className="avatar">
-            <div className=" w-24 h-24 rounded">
+            <div className="w-12 md:w-24 h-12 md:h-24 rounded">
               <img src={img} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
