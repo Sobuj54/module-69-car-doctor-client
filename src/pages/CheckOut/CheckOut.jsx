@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const CheckOut = () => {
   const service = useLoaderData();
@@ -22,8 +23,27 @@ const CheckOut = () => {
       service: _id,
       price,
     };
-
     console.log(order);
+
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your Order has been created",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      });
   };
 
   return (
