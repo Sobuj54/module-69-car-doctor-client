@@ -10,10 +10,16 @@ const Bookings = () => {
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+      .then((data) => setBookings(data));
+  });
 
-  return <div></div>;
+  return (
+    <div>
+      <h2 className="text-3xl text-center font-bold">
+        Bookings : {bookings.length}
+      </h2>
+    </div>
+  );
 };
 
 export default Bookings;
