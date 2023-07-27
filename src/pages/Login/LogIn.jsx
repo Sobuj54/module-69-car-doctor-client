@@ -26,6 +26,7 @@ const LogIn = () => {
         };
         console.log(loggedUser);
 
+        // getting jwt token
         fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
