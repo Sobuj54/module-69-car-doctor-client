@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
           email: currentUser.email,
         };
         // getting jwt token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://car-doctor-server-three-chi.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
