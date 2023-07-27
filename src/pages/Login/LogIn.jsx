@@ -2,6 +2,7 @@ import { useContext } from "react";
 import img from "../../assets/images/login/login.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../shared/Social/SocialLogin";
 
 const LogIn = () => {
   const { signIn } = useContext(AuthContext);
@@ -65,7 +66,6 @@ const LogIn = () => {
                   placeholder="email"
                   name="email"
                   className="input input-bordered"
-                  required
                 />
               </div>
               <div className="form-control">
@@ -77,7 +77,6 @@ const LogIn = () => {
                   placeholder="password"
                   name="password"
                   className="input input-bordered"
-                  required
                 />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
@@ -98,6 +97,7 @@ const LogIn = () => {
                   Sign Up
                 </Link>
               </div>
+              <SocialLogin></SocialLogin>
             </div>
           </form>
         </div>
