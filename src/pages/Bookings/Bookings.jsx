@@ -72,7 +72,7 @@ const Bookings = () => {
       </h2>
 
       <div className="overflow-x-auto mt-10">
-        <table className="table table-sm">
+        <table className="table table-lg">
           {/* head */}
           <thead>
             <tr>

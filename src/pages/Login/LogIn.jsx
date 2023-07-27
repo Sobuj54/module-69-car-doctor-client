@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import img from "../../assets/images/login/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const LogIn = () => {
   const { signIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -18,6 +22,7 @@ const LogIn = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -39,10 +44,11 @@ const LogIn = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="email"
                   name="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -50,10 +56,11 @@ const LogIn = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="password"
                   name="password"
                   className="input input-bordered"
+                  required
                 />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
