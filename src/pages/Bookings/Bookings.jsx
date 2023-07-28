@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import BookingRow from "./BookingRow";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import OrderHero from "../shared/OrderHero/OrderHero";
 
 const Bookings = () => {
   const { user } = useContext(AuthContext);
@@ -81,7 +82,8 @@ const Bookings = () => {
 
   return (
     <div className="mt-20">
-      <h2 className="text-3xl text-center font-bold">
+      <OrderHero></OrderHero>
+      <h2 className="text-3xl text-center font-bold mt-20">
         Bookings : {bookings.length}
       </h2>
 
