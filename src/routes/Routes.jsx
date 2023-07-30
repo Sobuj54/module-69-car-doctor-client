@@ -6,6 +6,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import CheckOut from "../pages/CheckOut/CheckOut";
 import Bookings from "../pages/Bookings/Bookings";
 import PrivateRoute from "./PrivateRoute";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             <Bookings></Bookings>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/*",
+        element: <PageNotFound></PageNotFound>,
       },
     ],
   },

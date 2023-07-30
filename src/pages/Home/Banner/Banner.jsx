@@ -18,8 +18,10 @@ const Banner = () => {
               majority have suffered alteration in some form
             </p>
             <div>
-              <button className="btn btn-secondary mr-5">Discover More</button>
-              <button className="btn btn-outline btn-secondary">
+              <button className="btn btn-sm md:btn-md btn-secondary mr-5">
+                Discover More
+              </button>
+              <button className="btn btn-sm md:btn-md btn-outline btn-secondary">
                 Latest Project
               </button>
             </div>
@@ -82,10 +84,10 @@ const Banner = () => {
           </div>
         </div>
         <div className="absolute  rounded-xl flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
-          <a href="#slide2" className="btn btn-circle btn-sm md:btn-lg mr-4">
+          <a href="#slide2" className="btn btn-circle  mr-4">
             ❮
           </a>
-          <a href="#slide4" className="btn btn-circle btn-sm md:btn-lg">
+          <a href="#slide4" className="btn btn-circle">
             ❯
           </a>
         </div>
@@ -102,8 +104,10 @@ const Banner = () => {
               majority have suffered alteration in some form
             </p>
             <div>
-              <button className="btn btn-secondary mr-5">Discover More</button>
-              <button className="btn btn-outline btn-secondary">
+              <button className="btn btn-sm md:btn-lg btn-secondary  mr-5">
+                Discover More
+              </button>
+              <button className="btn btn-outline btn-secondary btn-sm md:btn-md">
                 Latest Project
               </button>
             </div>

@@ -10,7 +10,7 @@ const CoreFeatures = () => {
       <div className="text-center space-y-5">
         <h4 className="text-2xl font-bold text-orange-600">Core Features</h4>
         <h2 className="text-4xl font-bold ">Why Choose Us</h2>
-        <p>
+        <p className="px-4">
           the majority have suffered alteration in some form, by injected
           humour, or randomised <br /> words which do not look even slightly
           believable.
