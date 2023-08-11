@@ -4,12 +4,13 @@ import ServiceCard from "./ServiceCard";
 
 const Services = () => {
   const [services, setServices] = useState([]);
+  const [ascending, setAscending] = useState(true);
 
   useEffect(() => {
-    fetch("https://car-doctor-server-three-chi.vercel.app/services")
+    fetch(`http://localhost:3000/services?sort=${ascending ? 1 : -1}`)
       .then((res) => res.json())
       .then((data) => setServices(data));
-  }, []);
+  }, [ascending]);
 
   return (
     <div className="mt-16">
@@ -21,6 +22,11 @@ const Services = () => {
           humour, or randomised <br /> words which do not look even slightly
           believable.
         </p>
+        <button
+          onClick={() => setAscending(!ascending)}
+          className="btn btn-primary">
+          {ascending ? "Price : High to Low" : "Price : Low to High"}
+        </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
